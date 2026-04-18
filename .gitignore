@@ -1,0 +1,55 @@
+# Built application files
+*.apk
+*.ap_
+*.aab
+*.dex
+
+# Android / Gradle build outputs
+build/
+**/build/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Gradle
+.gradle/
+gradle-app.setting
+!gradle/wrapper/gradle-wrapper.jar
+
+# Local machine (SDK path, etc.)
+local.properties
+
+# IDE — Android Studio / IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+.navigation/
+*.hprof
+
+# Kotlin
+*.class
+.kotlin/
+
+# Signing & secrets (never commit)
+*.jks
+*.keystore
+key.properties
+google-services.json
+
+# OS junk
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs & temp
+*.log
+*.tmp
+*.temp
+*.swp
+*~
+
+# Profiling / test outputs
+*.trace
+/reports/
