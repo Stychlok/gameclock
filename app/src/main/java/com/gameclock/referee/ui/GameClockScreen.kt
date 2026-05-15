@@ -240,17 +240,20 @@ private fun DurationEditScreen(
 
     val maxMinute = maxTotalSec / 60
     val secUpperInclusive = if (draftMin >= maxMinute) maxTotalSec % 60 else 59
+    val secLowerInclusive = if (draftMin == 0) minTotalSec else 0
 
     fun setDraftMin(newMin: Int) {
         val m = newMin.coerceIn(0, maxMinute)
         draftMin = m
         val su = if (m >= maxMinute) maxTotalSec % 60 else 59
-        if (draftSec > su) draftSec = su
+        val sl = if (m == 0) minTotalSec else 0
+        draftSec = draftSec.coerceIn(sl, su)
     }
 
     fun setDraftSec(newSec: Int) {
         val su = if (draftMin >= maxMinute) maxTotalSec % 60 else 59
-        draftSec = newSec.coerceIn(0, su)
+        val sl = if (draftMin == 0) minTotalSec else 0
+        draftSec = newSec.coerceIn(sl, su)
     }
 
     val draftTotal = draftMin * 60 + draftSec
@@ -301,7 +304,7 @@ private fun DurationEditScreen(
             TimeStepperRow(
                 label = "sec",
                 value = draftSec,
-                range = 0..secUpperInclusive,
+                range = secLowerInclusive..secUpperInclusive,
                 onChange = { setDraftSec(it) },
                 compact = true
             )
@@ -324,10 +327,7 @@ private fun DurationEditScreen(
             Box(
                 modifier = Modifier
                     .size(48.dp)
-                    .clickable {
-                        val total = draftTotal.coerceIn(minTotalSec, maxTotalSec)
-                        onSave(total)
-                    },
+                    .clickable { onSave(draftTotal) },
                 contentAlignment = Alignment.Center
             ) {
                 DoneCheckIcon(color = Color(0xFFBB86FC))
