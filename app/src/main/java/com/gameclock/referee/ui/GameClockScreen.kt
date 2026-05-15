@@ -136,7 +136,11 @@ fun GameClockScreen() {
         sessionTotalSec != null -> RunningQuarterView(
             secondsLeft = secondsLeft,
             isRunning = isRunning,
-            onTogglePause = { isRunning = !isRunning },
+            onTogglePause = {
+                val starting = !isRunning
+                isRunning = starting
+                if (starting) vibrateStart(context) else vibrateStop(context)
+            },
             onOpenAdjustRemaining = {
                 if (!isRunning && secondsLeft > 0) {
                     adjustEntrySnapshotSec = secondsLeft
@@ -151,6 +155,7 @@ fun GameClockScreen() {
                 sessionTotalSec = savedQuarterSec
                 secondsLeft = savedQuarterSec
                 isRunning = true
+                vibrateStart(context)
             },
             onOpenSettings = { showSettings = true }
         )
@@ -807,6 +812,28 @@ private fun vibrateUrgent(context: Context) {
                 intArrayOf(0, 255, 0, 255),
                 -1
             )
+        )
+    }
+}
+
+private fun vibrateStart(context: Context) {
+    val vibrator = getVibrator(context) ?: return
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && vibrator.hasVibrator()) {
+        vibrator.vibrate(
+            VibrationEffect.createWaveform(
+                longArrayOf(0, 60, 50, 60),
+                intArrayOf(0, 180, 0, 255),
+                -1
+            )
+        )
+    }
+}
+
+private fun vibrateStop(context: Context) {
+    val vibrator = getVibrator(context) ?: return
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && vibrator.hasVibrator()) {
+        vibrator.vibrate(
+            VibrationEffect.createOneShot(220, 255)
         )
     }
 }
