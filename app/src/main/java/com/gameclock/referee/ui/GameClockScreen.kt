@@ -166,6 +166,7 @@ private fun IdleHomeView(
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .clickable(onClick = onStartQuarter)
             .padding(horizontal = 10.dp, vertical = 12.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
@@ -184,8 +185,7 @@ private fun IdleHomeView(
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily.Monospace,
                 color = Color(0xFFBB86FC),
-                textAlign = TextAlign.Center,
-                modifier = Modifier.clickable(onClick = onStartQuarter)
+                textAlign = TextAlign.Center
             )
             Text(
                 text = "Tap to start",
@@ -729,6 +729,7 @@ private fun RunningQuarterView(
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .clickable(enabled = secondsLeft > 0, onClick = onTogglePause)
             .padding(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
@@ -748,11 +749,7 @@ private fun RunningQuarterView(
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily.Monospace,
                 color = displayColor,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.clickable(
-                    enabled = secondsLeft > 0,
-                    onClick = onTogglePause
-                )
+                textAlign = TextAlign.Center
             )
             Text(
                 text = "quarter",

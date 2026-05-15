@@ -44,4 +44,32 @@ Application ID / namespace: **`com.gameclock.referee`**.
 
 ---
 
+## Google Play Store
+
+### Short description
+Referee game clock for your wrist — track quarters hands-free on Wear OS.
+
+### Long description
+Game Clock is a Wear OS app built for referees and sideline staff who need a reliable, wrist-mounted quarter timer during American football games and similar timed sports.
+
+**Quarter countdown**
+Set your quarter length once — the app remembers it. Tap the large time display to start the countdown. Tap again to pause or resume. No fumbling with your phone on the sideline.
+
+**Adjust time on the fly**
+Made a mistake? Paused the clock and need to correct the remaining time? Open the adjust screen and nudge minutes and seconds up or down with large, glove-friendly buttons. The original value stays visible so you always know what changed.
+
+**Haptic alerts**
+The watch vibrates each second during the final 10 seconds, and switches to a stronger double-pulse in the last few seconds — so you feel the quarter end even in a noisy environment.
+
+**Real time at a glance**
+While a quarter is running, the current time of day is shown at the top of the screen. You never lose track of the actual clock while timing the game.
+
+**Always-on display**
+The screen stays awake for the full duration of a quarter, so the time is always visible without a wrist flick.
+
+**Clean, minimal design**
+Dark theme with high-contrast purple accents, built for round Wear OS watch faces. Large tap targets work reliably even with gloves.
+
+---
+
 This project is for personal or team sideline timing; it is not affiliated with any league or official timekeeping system.
